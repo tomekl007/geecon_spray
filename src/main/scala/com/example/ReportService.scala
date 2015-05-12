@@ -1,11 +1,18 @@
 package com.example
 
-import akka.actor.Actor
+import akka.actor.{ActorRef, Actor}
+import com.example.actors.TriggerGenerating
+import spray.caching.Cache
+import spray.http.HttpHeaders.Location
 import spray.routing._
 import spray.http._
 import MediaTypes._
+import spray.http.StatusCodes._
 
-class ReportServiceActor extends Actor with ReportService {
+import scala.concurrent.Await
+import scala.concurrent.duration.Duration
+
+class ReportServiceActor() extends Actor with ReportService {
 
   def actorRefFactory = context
 
