@@ -13,11 +13,11 @@ import scala.concurrent.duration.Duration
 
 class ReportServiceSpec extends Specification with Specs2RouteTest with ReportService {
   def actorRefFactory = system
-  
+
   "ReportService" should {
 
     "" in {
-      Get() ~> reportRoute ~> check {
+      Get() ~> reportRoute() ~> check {
 
       }
     }
